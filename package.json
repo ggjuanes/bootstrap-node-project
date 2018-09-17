@@ -5,29 +5,40 @@
   "author": "Guillermo Garcia Juanes",
   "license": "MIT",
   "engines": {
-    "node": ">=8"
+    "node": ">=8.11"
+  },
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "mysql": "^2.16.0",
+    "raven": "^2.6.4",
+    "reflect-metadata": "^0.1.12",
+    "typeorm": "0.2.7",
+    "inversify": "^4.13.0",
+    "reflect-metadata": "^0.1.12"
   },
   "devDependencies": {
     "@types/chai": "^4.1.4",
-    "@types/faker": "^4.1.2",
+    "@types/chai-as-promised": "^7.1.0",
+    "@types/dotenv": "^4.0.3",
+    "@types/faker": "^4.1.3",
     "@types/mocha": "^5.2.5",
-    "@types/node": "^10.5.8",
+    "@types/node": "^10.9.1",
+    "@types/raven": "^2.5.1",
     "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
     "faker": "^4.1.0",
     "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
+    "sinon": "^6.2.0",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "typescript": "^3.0.1"
   },
   "scripts": {
-    "build": "tsc && yarn run lint",
-    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "build": "yarn run lint && yarn run tsc",
+    "lint": "tslint -c tslint.json src/**/*.ts test/**/*.ts",
     "tsc": "tsc",
     "hello-world": "node dist/app.js",
-    "test": "mocha -r ts-node/register src/**/*.spec.ts"
-  },
-  "dependencies": {
-    "inversify": "^4.13.0",
-    "reflect-metadata": "^0.1.12"
+    "test": "nyc mocha"
   }
 }
