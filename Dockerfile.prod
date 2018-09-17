@@ -1,0 +1,14 @@
+FROM ggjuanes/node-dev:0.0.1
+
+ENV ENVIRONMENT production
+
+RUN apk add --no-cache git
+ADD . /var/development/workspace
+RUN git reset --hard master
+
+# Clean up no needed code
+RUN rm -rf node_modules/
+RUN rm -rf coverage/
+
+# Install dependencies and prepare build
+RUN yarn install

@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  app:
+    container_name: <bootstrap-node-project-prod>
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    tty: true
+
+  database-prod:
+    image: mysql:5.7
+    container_name: <bootstrap-node-project-database-prod>
+
+    environment:
+      MYSQL_DATABASE: <bootstrap-node-project-database-prod>
+      MYSQL_USER: <user>
+      MYSQL_ROOT_PASSWORD: <password>
+
+    ports:
+      - "3306:3306"
